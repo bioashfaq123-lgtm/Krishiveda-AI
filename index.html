@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrishiVeda AI | Timeless Farming Wisdom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: '#1e4620', /* Deep organic forest green */
+                        soil: '#4a3b32',   /* Warm earth soil brown */
+                        gold: '#f9c23c'    /* Soft crop gold-yellow */
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-soil font-sans antialiased">
+
+    <!-- 1. Header/Nav -->
+    <nav class="bg-white shadow-sm py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50">
+        <div class="text-2xl font-bold text-forest tracking-tight">KrishiVeda AI</div>
+        
+        <div class="flex items-center gap-3 md:gap-4">
+            <!-- Language Switcher Dropdown -->
+            <select id="langSwitch" onchange="changeLanguage(this.value)" class="bg-gray-100 border border-gray-300 text-forest font-semibold py-2 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest cursor-pointer shadow-sm">
+                <option value="en" selected>English</option>
+                <option value="hi">हिंदी</option>
+                <option value="te">తెలుగు</option>
+            </select>
+            
+            <a href="#pricing" data-i18n="nav_join" class="hidden sm:inline-block bg-gold text-forest font-semibold py-2 px-5 rounded-full hover:bg-yellow-400 transition shadow-sm">Join Free Plan</a>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section -->
+    <section class="container mx-auto px-6 py-16 text-center md:py-24">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-forest mb-6 leading-tight">
+            <span data-i18n="hero_title_1">Timeless Farming Wisdom.</span> <br/>
+            <span data-i18n="hero_title_2" class="text-gold">Real-Time AI Decisions.</span>
+        </h1>
+        <p data-i18n="hero_subtitle" class="text-lg md:text-xl max-w-2xl mx-auto mb-10 text-gray-700">
+            Precision agriculture with zero hardware costs. We analyze satellite data, local micro-climates, and mandi trends to send simple, direct watering and selling instructions to your WhatsApp.
+        </p>
+        <div class="flex justify-center gap-4 mb-12">
+            <a href="https://wa.me/" class="bg-[#25D366] text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-green-600 transition flex items-center gap-2">
+                <i class="fab fa-whatsapp text-xl"></i> <span data-i18n="hero_cta">Get Started on WhatsApp</span>
+            </a>
+        </div>
+        
+        <!-- Image Placeholder -->
+        <div class="max-w-4xl mx-auto bg-gray-200 rounded-2xl border-4 border-white shadow-xl overflow-hidden h-64 md:h-96 flex items-center justify-center relative">
+            <img src="hero-banner.png" alt="Hero Banner" class="w-full h-full object-cover absolute inset-0 z-0" onerror="this.style.display='none'">
+            <div class="text-gray-500 font-medium z-10 text-center px-4">
+                <i class="fas fa-image text-4xl mb-2"></i>
+                <p>Hero Banner Placeholder (hero-banner.png)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Feature Grid -->
+    <section class="bg-forest text-white py-16 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <h2 data-i18n="feat_main_title" class="text-3xl font-bold text-center mb-12 text-gold">Why KrishiVeda AI?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white/10 p-8 rounded-xl backdrop-blur-sm border border-white/20 text-center hover:bg-white/20 transition">
+                    <div class="text-4xl mb-4 text-gold"><i class="fas fa-satellite"></i></div>
+                    <h3 data-i18n="feat1_title" class="text-xl font-bold mb-3">Satellite Soil Moisture Tracking</h3>
+                    <p data-i18n="feat1_desc" class="text-gray-200 text-sm">Hyper-local satellite vegetation mapping (NDVI) updated weekly to track your farm's health without expensive sensors.</p>
+                </div>
+                <div class="bg-white/10 p-8 rounded-xl backdrop-blur-sm border border-white/20 text-center hover:bg-white/20 transition">
+                    <div class="text-4xl mb-4 text-gold"><i class="fas fa-chart-line"></i></div>
+                    <h3 data-i18n="feat2_title" class="text-xl font-bold mb-3">Predictive Mandi Market Pricing</h3>
+                    <p data-i18n="feat2_desc" class="text-gray-200 text-sm">Predictive 14-day Mandi market price peak forecasting to help you optimize harvest-sale windows and maximize profits.</p>
+                </div>
+                <div class="bg-white/10 p-8 rounded-xl backdrop-blur-sm border border-white/20 text-center hover:bg-white/20 transition">
+                    <div class="text-4xl mb-4 text-gold"><i class="fab fa-whatsapp"></i></div>
+                    <h3 data-i18n="feat3_title" class="text-xl font-bold mb-3">Direct WhatsApp Delivery</h3>
+                    <p data-i18n="feat3_desc" class="text-gray-200 text-sm">No app downloads needed. Receive personalized alerts in your native language directly on your WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Pricing Section -->
+    <section id="pricing" class="container mx-auto px-6 py-20">
+        <h2 data-i18n="pricing_title" class="text-3xl font-bold text-center text-forest mb-12">Choose Your Plan</h2>
+        <div class="flex flex-col md:flex-row justify-center items-stretch gap-8 max-w-5xl mx-auto">
+            
+            <!-- Free Plan -->
+            <div class="flex-1 bg-white border border-gray-200 p-8 rounded-2xl shadow-sm hover:shadow-md transition">
+                <h3 class="text-2xl font-bold text-soil mb-2">Kisan Mitra</h3>
+                <p data-i18n="plan_free_badge" class="text-gray-500 mb-6">Forever Free Plan</p>
+                <div class="text-4xl font-extrabold text-forest mb-6">₹0<span class="text-lg text-gray-500 font-normal">/mo</span></div>
+                <ul class="space-y-4 mb-8 text-gray-700">
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span data-i18n="plan_free_feat1">Weekly local weather summary</span></li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span data-i18n="plan_free_feat2">Basic district pest warnings</span></li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span data-i18n="plan_free_feat3">Standard crop mandi price sheets</span></li>
+                </ul>
+                <a href="#register" data-i18n="plan_free_cta" class="block text-center w-full border-2 border-forest text-forest font-bold py-3 rounded-xl hover:bg-forest hover:text-white transition">Join Free</a>
+            </div>
+            
+            <!-- Premium Plan -->
+            <div class="flex-1 bg-white border-2 border-gold p-8 rounded-2xl shadow-xl relative transform md:-translate-y-4">
+                <div data-i18n="plan_premium_badge" class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gold text-forest font-bold px-4 py-1 rounded-full text-sm uppercase tracking-wide whitespace-nowrap">Most Popular</div>
+                <h3 class="text-2xl font-bold text-forest mb-2">Kisan Vikas</h3>
+                <p data-i18n="plan_premium_sub" class="text-gray-500 mb-6">Premium Plan</p>
+                <div class="text-4xl font-extrabold text-forest mb-2">₹99<span class="text-lg text-gray-500 font-normal">/mo</span></div>
+                <p data-i18n="plan_premium_price_sub" class="text-sm text-gray-400 mb-6">or ₹999/year (Save 15%)</p>
+                <ul class="space-y-4 mb-8 text-gray-700">
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span data-i18n="plan_premium_feat1">Hyper-local satellite vegetation mapping</span></li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span data-i18n="plan_premium_feat2">Personalized daily irrigation scheduling</span></li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span data-i18n="plan_premium_feat3">Early-warning pest/disease alerts</span></li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span data-i18n="plan_premium_feat4">Predictive 14-day Mandi market price forecasting</span></li>
+                </ul>
+                <a href="#register" data-i18n="plan_premium_cta" class="block text-center w-full bg-forest text-white font-bold py-3 rounded-xl hover:bg-green-900 transition">Upgrade to Vikas</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. FAQ Section -->
+    <section class="bg-gray-100 py-16 px-6">
+        <div class="container mx-auto max-w-3xl">
+            <h2 data-i18n="faq_title" class="text-3xl font-bold text-center text-forest mb-10">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <details class="group bg-white p-6 rounded-xl shadow-sm cursor-pointer border border-gray-200">
+                    <summary class="flex justify-between items-center font-bold text-lg text-soil list-none">
+                        <span data-i18n="faq1_q">How does the satellite data work?</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fas fa-chevron-down text-gray-400"></i>
+                        </span>
+                    </summary>
+                    <p data-i18n="faq1_a" class="text-gray-600 mt-4 leading-relaxed">
+                        We use open-source Sentinel-2 satellite imagery to measure vegetation indices (like NDVI) and estimate soil moisture depletion. Our AI processes this complex data into simple alerts, so you don't need any physical sensors on your farm.
+                    </p>
+                </details>
+                
+                <details class="group bg-white p-6 rounded-xl shadow-sm cursor-pointer border border-gray-200">
+                    <summary class="flex justify-between items-center font-bold text-lg text-soil list-none">
+                        <span data-i18n="faq2_q">What languages are supported?</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fas fa-chevron-down text-gray-400"></i>
+                        </span>
+                    </summary>
+                    <p data-i18n="faq2_a" class="text-gray-600 mt-4 leading-relaxed">
+                        Alerts are currently translated into clear, friendly vernacular Indian English and major regional languages like Hindi, Telugu, and Tamil. You can choose your preferred language during registration.
+                    </p>
+                </details>
+                
+                <details class="group bg-white p-6 rounded-xl shadow-sm cursor-pointer border border-gray-200">
+                    <summary class="flex justify-between items-center font-bold text-lg text-soil list-none">
+                        <span data-i18n="faq3_q">Is my data private and secure?</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fas fa-chevron-down text-gray-400"></i>
+                        </span>
+                    </summary>
+                    <p data-i18n="faq3_a" class="text-gray-600 mt-4 leading-relaxed">
+                        Absolutely. Your farm details and WhatsApp number are kept strictly confidential. We only use your data to provide personalized agronomy advice and do not sell information to third-party advertisers.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-forest text-white py-8 text-center border-t border-green-800">
+        <p class="text-sm text-gray-300">&copy; 2026 KrishiVeda AI. All rights reserved.</p>
+    </footer>
+
+    <!-- 6. Sticky Floating Action Button (Mobile Only) -->
+    <a href="https://wa.me/" class="md:hidden fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-green-600 z-50 transition transform hover:scale-110 flex items-center justify-center border-2 border-white">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Language Translation Script -->
+    <script>
+        const translations = {
+            "en": {
+                "nav_join": "Join Free Plan",
+                "hero_title_1": "Timeless Farming Wisdom. ",
+                "hero_title_2": "Real-Time AI Decisions.",
+                "hero_subtitle": "Precision agriculture with zero hardware costs. We analyze satellite data, local micro-climates, and mandi trends to send simple, direct watering and selling instructions to your WhatsApp.",
+                "hero_cta": "Get Started on WhatsApp",
+                "feat_main_title": "Why KrishiVeda AI?",
+                "feat1_title": "Satellite Soil Moisture Tracking",
+                "feat1_desc": "Hyper-local satellite vegetation mapping (NDVI) updated weekly to track your farm's health without expensive sensors.",
+                "feat2_title": "Predictive Mandi Market Pricing",
+                "feat2_desc": "Predictive 14-day Mandi market price peak forecasting to help you optimize harvest-sale windows and maximize profits.",
+                "feat3_title": "Direct WhatsApp Delivery",
+                "feat3_desc": "No app downloads needed. Receive personalized alerts in your native language directly on your WhatsApp.",
+                "pricing_title": "Choose Your Plan",
+                "plan_free_badge": "Forever Free Plan",
+                "plan_free_feat1": "Weekly local weather summary",
+                "plan_free_feat2": "Basic district pest warnings",
+                "plan_free_feat3": "Standard crop mandi price sheets",
+                "plan_free_cta": "Join Free",
+                "plan_premium_badge": "Most Popular",
+                "plan_premium_sub": "Premium Plan",
+                "plan_premium_price_sub": "or ₹999/year (Save 15%)",
+                "plan_premium_feat1": "Hyper-local satellite vegetation mapping",
+                "plan_premium_feat2": "Personalized daily irrigation scheduling",
+                "plan_premium_feat3": "Early-warning pest/disease alerts",
+                "plan_premium_feat4": "Predictive 14-day Mandi market price forecasting",
+                "plan_premium_cta": "Upgrade to Vikas",
+                "faq_title": "Frequently Asked Questions",
+                "faq1_q": "How does the satellite data work?",
+                "faq1_a": "We use open-source Sentinel-2 satellite imagery to measure vegetation indices (like NDVI) and estimate soil moisture depletion. Our AI processes this complex data into simple alerts, so you don't need any physical sensors on your farm.",
+                "faq2_q": "What languages are supported?",
+                "faq2_a": "Alerts are currently translated into clear, friendly vernacular Indian English and major regional languages like Hindi, Telugu, and Tamil. You can choose your preferred language during registration.",
+                "faq3_q": "Is my data private and secure?",
+                "faq3_a": "Absolutely. Your farm details and WhatsApp number are kept strictly confidential. We only use your data to provide personalized agronomy advice and do not sell information to third-party advertisers."
+            },
+            "hi": {
+                "nav_join": "मुफ़्त प्लान से जुड़ें",
+                "hero_title_1": "कालातीत कृषि ज्ञान। ",
+                "hero_title_2": "रियल-टाइम AI निर्णय।",
+                "hero_subtitle": "शून्य हार्डवेयर लागत के साथ सटीक कृषि। हम उपग्रह डेटा, स्थानीय मौसम और मंडी के रुझानों का विश्लेषण करके आपके व्हाट्सएप पर सीधे सिंचाई और बिक्री के निर्देश भेजते हैं।",
+                "hero_cta": "WhatsApp पर शुरू करें",
+                "feat_main_title": "KrishiVeda AI क्यों?",
+                "feat1_title": "सैटेलाइट मिट्टी नमी ट्रैकिंग",
+                "feat1_desc": "महंगे सेंसर के बिना आपके खेत के स्वास्थ्य को ट्रैक करने के लिए साप्ताहिक अपडेटेड हाइपर-लोकल सैटेलाइट वनस्पति मैपिंग (NDVI)।",
+                "feat2_title": "मंडी बाजार मूल्य पूर्वानुमान",
+                "feat2_desc": "कटाई-बिक्री विंडो को अनुकूलित करने और मुनाफे को अधिकतम करने में मदद करने के लिए 14-दिवसीय मंडी बाजार मूल्य शिखर पूर्वानुमान।",
+                "feat3_title": "सीधा WhatsApp डिलीवरी",
+                "feat3_desc": "किसी ऐप डाउनलोड की आवश्यकता नहीं है। अपने व्हाट्सएप पर सीधे अपनी मूल भाषा में व्यक्तिगत अलर्ट प्राप्त करें।",
+                "pricing_title": "अपना प्लान चुनें",
+                "plan_free_badge": "हमेशा के लिए मुफ़्त प्लान",
+                "plan_free_feat1": "साप्ताहिक स्थानीय मौसम सारांश",
+                "plan_free_feat2": "बुनियादी जिला कीट चेतावनियां",
+                "plan_free_feat3": "मानक फसल मंडी मूल्य सूची",
+                "plan_free_cta": "मुफ़्त में जुड़ें",
+                "plan_premium_badge": "सबसे लोकप्रिय",
+                "plan_premium_sub": "प्रीमियम प्लान",
+                "plan_premium_price_sub": "या ₹999/वर्ष (15% बचाएं)",
+                "plan_premium_feat1": "हाइपर-लोकल सैटेलाइट वनस्पति मैपिंग",
+                "plan_premium_feat2": "व्यक्तिगत दैनिक सिंचाई शेड्यूलिंग",
+                "plan_premium_feat3": "प्रारंभिक चेतावनी कीट/रोग अलर्ट",
+                "plan_premium_feat4": "14-दिवसीय मंडी बाजार मूल्य पूर्वानुमान",
+                "plan_premium_cta": "Vikas में अपग्रेड करें",
+                "faq_title": "अक्सर पूछे जाने वाले प्रश्न",
+                "faq1_q": "सैटेलाइट डेटा कैसे काम करता है?",
+                "faq1_a": "हम वनस्पति सूचकांक (जैसे NDVI) को मापने और मिट्टी की नमी की कमी का अनुमान लगाने के लिए ओपन-सोर्स सेंटिनल-2 उपग्रह इमेजरी का उपयोग करते हैं। हमारा AI इस जटिल डेटा को सरल अलर्ट में बदलता है, जिससे आपको खेतों में सेंसर की आवश्यकता नहीं होती।",
+                "faq2_q": "कौन सी भाषाएं समर्थित हैं?",
+                "faq2_a": "अलर्ट वर्तमान में स्पष्ट, अनुकूल भारतीय अंग्रेजी और हिंदी, तेलुगु, और तमिल जैसी प्रमुख क्षेत्रीय भाषाओं में उपलब्ध हैं। पंजीकरण के समय आप अपनी भाषा चुन सकते हैं।",
+                "faq3_q": "क्या मेरा डेटा सुरक्षित है?",
+                "faq3_a": "बिल्कुल। आपके खेत का विवरण और व्हाट्सएप नंबर पूरी तरह से गोपनीय रखा जाता है। हम आपके डेटा का उपयोग केवल व्यक्तिगत सलाह देने के लिए करते हैं।"
+            },
+            "te": {
+                "nav_join": "ఉచిత ప్లాన్‌లో చేరండి",
+                "hero_title_1": "కాలాతీత వ్యవసాయ జ్ఞానం. ",
+                "hero_title_2": "రియల్-టైమ్ AI నిర్ణయాలు.",
+                "hero_subtitle": "ఎలాంటి హార్డ్‌వేర్ ఖర్చు లేకుండా కచ్చితమైన వ్యవసాయం. మీ వాట్సాప్‌కు నేరుగా నీటి పారుదల మరియు విక్రయ సూచనలను పంపడానికి మేము ఉపగ్రహ డేటా, స్థానిక వాతావరణం మరియు మండి ట్రెండ్‌లను విశ్లేషిస్తాము.",
+                "hero_cta": "WhatsApp లో ప్రారంభించండి",
+                "feat_main_title": "కృషివేద AI ఎందుకు?",
+                "feat1_title": "శాటిలైట్ మట్టి తేమ ట్రాకింగ్",
+                "feat1_desc": "ఖరీదైన సెన్సార్లు లేకుండా మీ పొలం ఆరోగ్యాన్ని ట్రాక్ చేయడానికి వారానికోసారి అప్‌డేట్ చేయబడే హైపర్-లోకల్ శాటిలైట్ వెజిటేషన్ మ్యాపింగ్ (NDVI).",
+                "feat2_title": "ప్రిడిక్టివ్ మండి మార్కెట్ ధరలు",
+                "feat2_desc": "మీ పంటను సరైన సమయంలో అమ్మి లాభాలను పెంచుకోవడానికి 14 రోజుల ముందుగానే మండి మార్కెట్ ధరల అంచనా.",
+                "feat3_title": "డైరెక్ట్ వాట్సాప్ డెలివరీ",
+                "feat3_desc": "ఎలాంటి యాప్ డౌన్‌లోడ్ అవసరం లేదు. మీ మాతృభాషలో వాట్సాప్ ద్వారా నేరుగా వ్యక్తిగతీకరించిన హెచ్చరికలను పొందండి.",
+                "pricing_title": "మీ ప్లాన్‌ను ఎంచుకోండి",
+                "plan_free_badge": "ఎప్పటికీ ఉచిత ప్లాన్",
+                "plan_free_feat1": "వారపు స్థానిక వాతావరణ సారాంశం",
+                "plan_free_feat2": "ప్రాథమిక జిల్లా తెగులు హెచ్చరికలు",
+                "plan_free_feat3": "ప్రామాణిక పంట మండి ధర పట్టికలు",
+                "plan_free_cta": "ఉచితంగా చేరండి",
+                "plan_premium_badge": "అత్యంత ప్రజాదరణ",
+                "plan_premium_sub": "ప్రీమియం ప్లాన్",
+                "plan_premium_price_sub": "లేదా ₹999/సంవత్సరానికి (15% ఆదా చేయండి)",
+                "plan_premium_feat1": "హైపర్-లోకల్ శాటిలైట్ వెజిటేషన్ మ్యాపింగ్",
+                "plan_premium_feat2": "వ్యక్తిగతీకరించిన రోజువారీ నీటి పారుదల షెడ్యూల్",
+                "plan_premium_feat3": "ముందస్తు తెగులు/వ్యాధి హెచ్చరికలు",
+                "plan_premium_feat4": "14-రోజుల మండి మార్కెట్ ధర అంచనా",
+                "plan_premium_cta": "Vikas కు అప్‌గ్రేడ్ చేయండి",
+                "faq_title": "తరచుగా అడిగే ప్రశ్నలు",
+                "faq1_q": "శాటిలైట్ డేటా ఎలా పనిచేస్తుంది?",
+                "faq1_a": "మేము వృక్షసంపద సూచికలను (NDVI వంటివి) కొలవడానికి మరియు మట్టి తేమ క్షీణతను అంచనా వేయడానికి ఓపెన్-సోర్స్ సెంటినెల్-2 ఉపగ్రహ చిత్రాలను ఉపయోగిస్తాము. మా AI ఈ సంక్లిష్ట డేటాను సరళమైన హెచ్చరికలుగా మారుస్తుంది, తద్వారా మీకు భౌతిక సెన్సార్లు అవసరం లేదు.",
+                "faq2_q": "ఏ భాషలకు మద్దతు ఉంది?",
+                "faq2_a": "హెచ్చరికలు ప్రస్తుతం స్పష్టమైన, స్నేహపూర్వక భారతీయ ఇంగ్లీష్ మరియు హిందీ, తెలుగు, తమిళం వంటి ప్రధాన ప్రాంతీయ భాషలలో అందుబాటులో ఉన్నాయి. రిజిస్ట్రేషన్ సమయంలో మీరు మీకు నచ్చిన భాషను ఎంచుకోవచ్చు.",
+                "faq3_q": "నా డేటా గోప్యంగా మరియు సురక్షితంగా ఉంటుందా?",
+                "faq3_a": "ఖచ్చితంగా. మీ పొలం వివరాలు మరియు వాట్సాప్ నంబర్ ఖచ్చితంగా గోప్యంగా ఉంచబడతాయి. మేము మీ డేటాను మీకు సలహా ఇవ్వడానికి మాత్రమే ఉపయోగిస్తాము."
+            }
+        };
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            
+            // Re-run Tailwind to ensure everything is painted smoothly, although DOM update is sufficient
+        }
+    </script>
+</body>
+</html>
