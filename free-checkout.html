@@ -95,47 +95,74 @@
         </div>
     </main>
 
-    <!-- Logic to simulate form submission to No-Code Database (Google Sheets/Make.com) -->
+    <!-- Logic for Make.com / Google Sheets Backend (Step 4 & Days 10-12 of Blueprint) -->
     <script>
+        // ==========================================
+        // BACKEND INTEGRATION 
+        // Paste your Make.com Webhook URL here to send REAL WhatsApp messages!
+        // Example: "https://hook.us1.make.com/xxxxxxxxxxxxxx"
+        const MAKE_WEBHOOK_URL = ""; 
+        // ==========================================
+
         document.getElementById('activate-btn').addEventListener('click', function() {
             const name = document.getElementById('farmer-name').value.trim();
             const phone = document.getElementById('farmer-phone').value.trim();
             const location = document.getElementById('farmer-location').value.trim();
             
-            // Validate that the fields are not empty
             if(!name || !phone || !location) {
                 alert('Please fill in your Full Name, WhatsApp Number, and Village/District to continue.');
                 return;
             }
 
-            // Simulate loading state (sending data to Google Sheets / Webhook)
             const btn = document.getElementById('activate-btn');
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin text-xl"></i> Registering...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin text-xl"></i> Processing...';
             btn.classList.add('opacity-75', 'cursor-not-allowed');
             btn.disabled = true;
 
-            setTimeout(() => {
-                // Transform the summary panel into a Success UI state aligned with the Blueprint Architecture
+            // If a Make.com Webhook is connected, send real data!
+            if(MAKE_WEBHOOK_URL !== "") {
+                fetch(MAKE_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: name, phone: phone, location: location, plan: "Kisan Mitra" })
+                }).then(response => {
+                    showSuccessScreen(name, phone);
+                }).catch(error => {
+                    alert("Failed to connect to backend CRM. Please check your Webhook URL.");
+                    btn.innerHTML = '<i class="fab fa-whatsapp text-xl"></i> Submit Registration';
+                    btn.disabled = false;
+                });
+            } else {
+                // Demo Mode Fallback (when no webhook is provided)
+                setTimeout(() => {
+                    showSuccessScreen(name, phone);
+                }, 1200); 
+            }
+
+            function showSuccessScreen(farmerName, farmerPhone) {
                 const summaryPanel = document.getElementById('summary-panel');
+                const demoNotice = MAKE_WEBHOOK_URL === "" ? `<div class="bg-yellow-50 text-yellow-800 text-xs p-2 rounded mt-4 border border-yellow-200"><strong>Note:</strong> You are in Demo Mode. To receive real WhatsApp messages on ${farmerPhone}, add your Make.com Webhook URL to the code!</div>` : '';
+
                 summaryPanel.innerHTML = `
                     <div class="text-center py-6">
                         <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl shadow-inner">
                             <i class="fas fa-check"></i>
                         </div>
                         <h2 class="text-2xl font-extrabold text-forest mb-3">Registration Complete!</h2>
-                        <p class="text-gray-600 mb-6 leading-relaxed">Welcome to Kisan Mitra, <strong>${name}</strong>. Your profile has been securely added to our database.</p>
+                        <p class="text-gray-600 mb-6 leading-relaxed">Welcome to Kisan Mitra, <strong>${farmerName}</strong>. Your profile has been securely added to our database.</p>
                         
-                        <div class="bg-white border-2 border-green-200 rounded-xl p-5 mb-6 text-left shadow-sm">
+                        <div class="bg-white border-2 border-green-200 rounded-xl p-5 mb-2 text-left shadow-sm">
                             <h4 class="text-sm font-extrabold text-forest mb-2 uppercase tracking-wide"><i class="fab fa-whatsapp mr-1 text-green-500 text-lg"></i> What happens next?</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">Our automated AI system (powered by Make.com) is processing your registration. You will automatically receive your first weather and mandi alert on <strong>${phone}</strong> very soon!</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">Our automated AI system (powered by Make.com) is processing your registration. You will automatically receive your first weather and mandi alert on <strong>${farmerPhone}</strong> very soon!</p>
                         </div>
+                        ${demoNotice}
                         
-                        <a href="index.html" class="inline-block mt-2 text-forest font-bold hover:text-green-700 hover:underline transition">
+                        <a href="index.html" class="inline-block mt-4 text-forest font-bold hover:text-green-700 hover:underline transition">
                             <i class="fas fa-arrow-left mr-1"></i> Return to Home
                         </a>
                     </div>
                 `;
-            }, 1200); // 1.2 second simulated API delay
+            }
         });
     </script>
 </body>
