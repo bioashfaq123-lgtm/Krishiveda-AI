@@ -44,24 +44,24 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-1">Full Name</label>
-                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest focus:outline-none" placeholder="e.g. Ramesh Kumar" required>
+                            <input type="text" id="farmer-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest focus:outline-none" placeholder="e.g. Ramesh Kumar" required>
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-1">WhatsApp Number</label>
-                            <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest focus:outline-none" placeholder="+91 XXXXX XXXXX" required>
+                            <input type="tel" id="farmer-phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest focus:outline-none" placeholder="+91 XXXXX XXXXX" required>
                         </div>
                     </div>
 
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Village & District</label>
-                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest focus:outline-none" placeholder="e.g. Palghar, Maharashtra" required>
+                        <input type="text" id="farmer-location" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest focus:outline-none" placeholder="e.g. Palghar, Maharashtra" required>
                     </div>
                 </form>
             </div>
 
             <!-- Right Col: Summary -->
             <div class="lg:col-span-5">
-                <div class="bg-gray-100 p-6 md:p-8 rounded-2xl border border-gray-200 sticky top-24">
+                <div id="summary-panel" class="bg-gray-100 p-6 md:p-8 rounded-2xl border border-gray-200 sticky top-24 transition-all duration-300">
                     <h2 class="text-xl font-bold text-forest mb-6 border-b border-gray-300 pb-4">Plan Summary</h2>
                     
                     <div class="flex justify-between items-center mb-4">
@@ -84,7 +84,7 @@
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="button" class="w-full bg-forest hover:bg-green-900 text-white font-bold py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-3 text-lg">
+                    <button type="button" id="activate-btn" class="w-full bg-forest hover:bg-green-900 text-white font-bold py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-3 text-lg">
                         <i class="fab fa-whatsapp text-xl"></i> Activate on WhatsApp
                     </button>
                     <p class="text-xs text-center text-gray-500 mt-4 leading-relaxed">
@@ -94,5 +94,42 @@
             </div>
         </div>
     </main>
+
+    <!-- Logic to handle form validation and WhatsApp redirect -->
+    <script>
+        document.getElementById('activate-btn').addEventListener('click', function() {
+            const name = document.getElementById('farmer-name').value.trim();
+            const phone = document.getElementById('farmer-phone').value.trim();
+            const location = document.getElementById('farmer-location').value.trim();
+            
+            // Validate that the fields are not empty
+            if(!name || !phone || !location) {
+                alert('Please fill in your Full Name, WhatsApp Number, and Village/District to continue.');
+                return;
+            }
+
+            // Create a pre-filled WhatsApp message based on their inputs
+            const waMessage = encodeURIComponent(`Hello KrishiVeda AI! I am ${name} from ${location}. I would like to activate my free Kisan Mitra plan on this number (${phone}).`);
+            // You can replace the below link with https://wa.me/91YOURNUMBER?text=... once you have your business number
+            const waLink = `https://wa.me/?text=${waMessage}`;
+
+            // Transform the summary panel into a beautiful Success UI state
+            const summaryPanel = document.getElementById('summary-panel');
+            summaryPanel.innerHTML = `
+                <div class="text-center py-6">
+                    <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl shadow-inner">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h2 class="text-2xl font-extrabold text-forest mb-3">Registration Ready!</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed">Welcome, <strong>${name}</strong>. Your profile details are ready to be sent to our AI system.</p>
+                    
+                    <a href="${waLink}" target="_blank" class="inline-flex w-full bg-[#25D366] hover:bg-green-600 text-white font-bold py-4 rounded-xl shadow-lg transition items-center justify-center gap-3 text-lg">
+                        <i class="fab fa-whatsapp text-2xl"></i> Open WhatsApp Now
+                    </a>
+                    <p class="text-xs text-gray-500 mt-5 leading-relaxed">Click the button above to send your activation message and immediately start receiving AI farming alerts.</p>
+                </div>
+            `;
+        });
+    </script>
 </body>
 </html>
