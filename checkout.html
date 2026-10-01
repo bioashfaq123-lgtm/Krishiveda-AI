@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | KrishiVeda AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: '#1e4620',
+                        soil: '#4a3b32',
+                        gold: '#f9c23c'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-soil font-sans antialiased min-h-screen flex flex-col">
+    <!-- Header -->
+    <nav class="bg-white shadow-sm py-4 px-6 flex items-center border-b border-gray-200">
+        <a href="index.html" class="text-2xl font-bold text-forest tracking-tight hover:text-green-800 transition">
+            <i class="fas fa-arrow-left text-lg mr-2"></i>KrishiVeda AI
+        </a>
+        <div class="ml-auto flex items-center text-gray-500 text-sm font-medium">
+            <i class="fas fa-lock mr-2 text-green-600"></i> Secure Checkout
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-12 max-w-5xl">
+        <h1 class="text-3xl font-extrabold text-forest mb-8 text-center md:text-left">Complete Your Upgrade</h1>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Left Col: Form -->
+            <div class="lg:col-span-7 bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200">
+                <h2 class="text-xl font-bold text-forest mb-6 border-b pb-4">Farmer Details</h2>
+                
+                <form id="checkout-form" class="space-y-5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Full Name</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest focus:outline-none" placeholder="e.g. Ramesh Kumar" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">WhatsApp Number</label>
+                            <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest focus:outline-none" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">Village & District</label>
+                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-forest focus:outline-none" placeholder="e.g. Palghar, Maharashtra" required>
+                    </div>
+                    
+                    <div class="pt-4">
+                        <label class="block text-sm font-semibold text-gray-700 mb-3">Select Billing Cycle</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="cursor-pointer border-2 border-forest bg-green-50 rounded-xl p-4 flex flex-col items-center text-center transition">
+                                <input type="radio" name="plan" value="yearly" class="hidden" checked>
+                                <span class="font-bold text-forest text-lg mb-1">Yearly Plan</span>
+                                <span class="text-sm text-gray-600 mb-2">₹999 / year</span>
+                                <span class="text-xs text-green-800 font-bold bg-green-200 px-3 py-1 rounded-full uppercase tracking-wide">Save 15%</span>
+                            </label>
+                            <label class="cursor-pointer border-2 border-gray-200 rounded-xl p-4 flex flex-col items-center text-center hover:border-gray-300 transition">
+                                <input type="radio" name="plan" value="monthly" class="hidden">
+                                <span class="font-bold text-soil text-lg mb-1">Monthly Plan</span>
+                                <span class="text-sm text-gray-600 mb-2">₹99 / month</span>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Right Col: Summary -->
+            <div class="lg:col-span-5">
+                <div class="bg-gray-100 p-6 md:p-8 rounded-2xl border border-gray-200 sticky top-24">
+                    <h2 class="text-xl font-bold text-forest mb-6 border-b border-gray-300 pb-4">Order Summary</h2>
+                    
+                    <div class="flex justify-between items-center mb-4">
+                        <div>
+                            <h3 class="font-bold text-lg text-soil">Kisan Vikas</h3>
+                            <p class="text-sm text-gray-500">Premium Precision Farming</p>
+                        </div>
+                        <div class="text-2xl font-extrabold text-forest" id="summary-price">₹999</div>
+                    </div>
+
+                    <ul class="space-y-4 mb-6 text-sm text-gray-700">
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-gold mt-0.5 text-lg"></i> Hyper-local satellite mapping</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-gold mt-0.5 text-lg"></i> Daily irrigation scheduling</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-gold mt-0.5 text-lg"></i> Early-warning pest alerts</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-gold mt-0.5 text-lg"></i> 14-day Mandi price forecasting</li>
+                    </ul>
+
+                    <div class="border-t border-gray-300 pt-6 flex justify-between items-center mb-8">
+                        <span class="font-bold text-gray-700 text-lg">Total Amount</span>
+                        <span class="text-3xl font-extrabold text-forest" id="total-price">₹999</span>
+                    </div>
+
+                    <!-- Razorpay Button -->
+                    <button type="button" class="w-full bg-[#3395FF] hover:bg-[#2084f3] text-white font-bold py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-3 text-lg">
+                        <i class="fas fa-shield-check"></i> Pay Securely with Razorpay
+                    </button>
+                    <div class="flex justify-center mt-4">
+                        <img src="https://razorpay.com/assets/razorpay-logo.svg" alt="Razorpay Logo" class="h-6 opacity-70">
+                    </div>
+                    <p class="text-xs text-center text-gray-500 mt-4 leading-relaxed">
+                        By proceeding, you agree to our Terms of Service. Payments are processed securely via 256-bit encryption.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Script to handle radio buttons (UI effect only) -->
+    <script>
+        const radios = document.querySelectorAll('input[name="plan"]');
+        const summaryPrice = document.getElementById('summary-price');
+        const totalPrice = document.getElementById('total-price');
+
+        radios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Reset styling
+                document.querySelectorAll('input[name="plan"]').forEach(r => {
+                    const label = r.closest('label');
+                    label.classList.remove('border-forest', 'bg-green-50');
+                    label.classList.add('border-gray-200');
+                    label.querySelector('.font-bold').classList.replace('text-forest', 'text-soil');
+                });
+                
+                // Add active styling
+                const activeLabel = this.closest('label');
+                activeLabel.classList.remove('border-gray-200');
+                activeLabel.classList.add('border-forest', 'bg-green-50');
+                activeLabel.querySelector('.font-bold').classList.replace('text-soil', 'text-forest');
+
+                // Update prices
+                if (this.value === 'yearly') {
+                    summaryPrice.innerText = '₹999';
+                    totalPrice.innerText = '₹999';
+                } else {
+                    summaryPrice.innerText = '₹99';
+                    totalPrice.innerText = '₹99';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
